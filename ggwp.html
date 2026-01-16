@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Absensi Pengurus PPHM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --gold:#d4af37;
+    --gold-soft:#f5e6a8;
+    --green:#1abc9c;
+}
+*{box-sizing:border-box;margin:0;padding:0;transition:.3s}
+body{
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at top,#145a32,#02140e);
+    color:#fff;
+    min-height:100vh;
+    padding:40px 15px;
+}
+header{text-align:center;margin-bottom:40px}
+header h1{
+    letter-spacing:4px;
+    color:var(--gold);
+    text-shadow:0 0 15px var(--gold),0 0 35px var(--green);
+}
+header p{color:#d5f5e3}
+#clock{color:var(--gold-soft);margin-top:10px}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+.card{
+    padding:35px 20px;
+    border-radius:26px;
+    background:linear-gradient(145deg,rgba(212,175,55,.18),rgba(26,188,156,.18));
+    border:1px solid rgba(212,175,55,.45);
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+}
+.card span{color:var(--gold-soft);font-size:14px}
+.card.done::after{
+    content:"✔";
+    position:absolute;
+    top:12px;
+    right:14px;
+    width:28px;height:28px;
+    background:linear-gradient(135deg,var(--gold),var(--green));
+    color:#000;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+.popup{
+    width:360px;
+    padding:30px;
+    border-radius:26px;
+    background:#03120d;
+    text-align:center;
+}
+.popup h2{color:var(--gold);margin-bottom:20px}
+.popup button{
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+    border:none;
+    border-radius:18px;
+    font-size:16px;
+    cursor:pointer;
+}
+.hadir{background:#2ecc71}
+.izin{background:#f7dc6f}
+.alfa{background:#0e6655;color:#fff}
+#toast{
+    position:fixed;
+    top:20px;
+    right:-350px;
+    background:linear-gradient(135deg,var(--gold),var(--green));
+    padding:14px 22px;
+    border-radius:16px;
+    color:#000;
+}
+#toast.show{right:20px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ABSENSI PENGURUS PPHM</h1>
+<p>Pondok Pesantren Hidayatul Mubtadi'in</p>
+<div id="clock"></div>
+</header>
+
+<div class="container">
+
+<div class="card" data-nik="3510123456780001" onclick="openPopup(this,'M. Hasanudin Zuhri')">
+<h3>M. Hasanudin Zuhri</h3><span>Ketua Pondok</span>
+</div>
+
+<div class="card" data-nik="3510123456780002" onclick="openPopup(this,'M. Lahum Afnan')">
+<h3>M. Lahum Afnan</h3><span>Wakil Ketua</span>
+</div>
+
+<div class="card" data-nik="3510123456780003" onclick="openPopup(this,'Jamaluddin Fathoni')">
+<h3>Jamaluddin Fathoni</h3><span>Sekretaris I</span>
+</div>
+
+<div class="card" data-nik="3510123456780004" onclick="openPopup(this,'Rizal Maulana')">
+<h3>Rizal Maulana</h3><span>Sekretaris II</span>
+</div>
+
+<div class="card" data-nik="3510123456780005" onclick="openPopup(this,'Anam Kurniawan')">
+<h3>Anam Kurniawan</h3><span>Bendahara</span>
+</div>
+
+<div class="card" data-nik="3510123456780006" onclick="openPopup(this,'Harun Ar-Rasyid')">
+<h3>Harun Ar-Rasyid</h3><span>Keamanan I</span>
+</div>
+
+<div class="card" data-nik="3510123456780007" onclick="openPopup(this,'Nando Zainal Abidin')">
+<h3>Nando Zainal Abidin</h3><span>Keamanan II</span>
+</div>
+
+<div class="card" data-nik="3510123456780008" onclick="openPopup(this,'Mujibul Hakim')">
+<h3>Mujibul Hakim</h3><span>Keamanan III</span>
+</div>
+
+<div class="card" data-nik="3510123456780009" onclick="openPopup(this,'Taufik Hidayat')">
+<h3>Taufik Hidayat</h3><span>Seksi Pendidikan & TPQ</span>
+</div>
+
+<div class="card" data-nik="3510123456780010" onclick="openPopup(this,'Ichrom Maulana')">
+<h3>Ichrom Maulana</h3><span>Seksi Pendidikan & TPQ</span>
+</div>
+
+<div class="card" data-nik="3510123456780011" onclick="openPopup(this,'Maftuh Prasetyo')">
+<h3>Maftuh Prasetyo</h3><span>Kelistrikan & Perairan</span>
+</div>
+
+<div class="card" data-nik="3510123456780012" onclick="openPopup(this,'Imam Wahyudi')">
+<h3>Imam Wahyudi</h3><span>Kebersihan I</span>
+</div>
+
+<div class="card" data-nik="3510123456780013" onclick="openPopup(this,'Sapril Ramadhan')">
+<h3>Sapril Ramadhan</h3><span>Kebersihan II</span>
+</div>
+
+<div class="card" data-nik="3510123456780014" onclick="openPopup(this,'Mujibul Hakim')">
+<h3>Mujibul Hakim</h3><span>Seksi Dokumentasi</span>
+</div>
+
+<div class="card" data-nik="3510123456780015" onclick="openPopup(this,'Ridwan Fauzi')">
+<h3>Ridwan Fauzi</h3><span>Seksi Kesehatan I</span>
+</div>
+
+<div class="card" data-nik="3510123456780016" onclick="openPopup(this,'Habibi Al-Fikri')">
+<h3>Habibi Al-Fikri</h3><span>Seksi Kesehatan II</span>
+</div>
+
+<div class="card" data-nik="3510123456780017" onclick="openPopup(this,'Aan Setiawan')">
+<h3>Aan Setiawan</h3><span>Sarana & Prasarana I</span>
+</div>
+
+<div class="card" data-nik="3510123456780018" onclick="openPopup(this,'M. Lahum Afnan')">
+<h3>M. Lahum Afnan</h3><span>Sarana & Prasarana II</span>
+</div>
+
+<div class="card" data-nik="3510123456780019" onclick="openPopup(this,'Haidir Ali')">
+<h3>Haidir Ali</h3><span>Seksi Kegiatan</span>
+</div>
+
+</div>
+
+<div class="overlay" id="popup">
+<div class="popup">
+<h2 id="nama"></h2>
+<button class="hadir" onclick="kirim('Hadir')">Hadir</button>
+<button class="izin" onclick="kirim('Izin')">Izin</button>
+<button class="alfa" onclick="kirim('Alfa')">Alfa</button>
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+let selectedName="", selectedNik="", selectedCard=null;
+const popup=document.getElementById("popup");
+const nama=document.getElementById("nama");
+const toastBox=document.getElementById("toast");
+
+setInterval(()=>{
+document.getElementById("clock").innerText=
+new Date().toLocaleString("id-ID",{dateStyle:"full",timeStyle:"short"});
+},1000);
+
+function toast(msg){
+toastBox.innerText=msg;
+toastBox.classList.add("show");
+setTimeout(()=>toastBox.classList.remove("show"),2500);
+}
+
+function openPopup(card,name){
+selectedName=name;
+selectedNik=card.dataset.nik;
+selectedCard=card;
+nama.innerText=name;
+popup.style.display="flex";
+}
+
+function kirim(status){
+fetch("https://script.google.com/macros/s/AKfycbw-AH5Fx9QL8f5rFqdu8HvkiM_AbvQCHk0QFRQCNAzlOpk4naBaZrHJz50_MpuDJMYW/exec",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+nik:selectedNik,
+nama:selectedName,
+status:status,
+waktu:new Date().toLocaleString("id-ID")
+})
+});
+selectedCard.classList.add("done");
+popup.style.display="none";
+toast(`✅ ${selectedName} : ${status}`);
+}
+</script>
+
+</body>
+</html>
